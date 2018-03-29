@@ -1,0 +1,15 @@
+<div class="app-login text-center">
+  <form class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+    <label for="username" class="sr-only"> Username</label>
+    <input type="text" id="username" class="form-control" [(ngModel)]="userName" placeholder="User Name" name="username" />
+    <label for="password" class="sr-only">Password</label>
+    <input type="password" id="password" [(ngModel)]="password" class="form-control" placeholder="Password" name="password" />
+    <div class="mt-3">
+      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
+    </div>
+  </form>
+</div>
+<div class="alert alert-danger" role="alert" *ngIf="loginFailed">
+  Wrong credentials
+</div>

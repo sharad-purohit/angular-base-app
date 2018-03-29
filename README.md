@@ -1,7 +1,15 @@
 
-# AngularBaseApp
+# Angular Base App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+This project gives a baseline angular based app to help you get started quickly
+
+## Key Features
+  * HttpInterceptor for passing authorization token
+  * Central alert management service
+  * Central loader management service
+  * Custom error handling
+  * Bootstrap4 Integration
+  * Environment Based Configuration
 
 ## Development server
 

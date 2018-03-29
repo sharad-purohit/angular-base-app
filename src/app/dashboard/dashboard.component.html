@@ -1,0 +1,13 @@
+<button (click)="signOut()" class="btn btn-secondary float-right">Sign Out</button>
+
+<h1 class="heading">Dashboard</h1>
+<div class="btn-group" role="group">
+    <button class="btn btn-primary" (click)="getData()">Get Data</button>
+    <button (click)="showAlert()" class="btn btn-primary">Show Alert</button>    
+</div>
+<div style="margin-top: 50px;">
+  <div *ngIf="testData">
+    <strong>Test Data : </strong>
+    <p>{{testData | json}} </p>
+  </div>
+</div>
