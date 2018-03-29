@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { APP_CONSTANTS } from '../constants/app.constants';
 import { WebStorageService } from './web-storage.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
 
 const ACCESS_TOKEN = 'access_token';
 const REFRESH_TOKEN = 'refresh_token';

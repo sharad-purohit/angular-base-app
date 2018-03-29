@@ -15,6 +15,8 @@ This project gives a baseline angular based app to help you get started quickly
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+Run `ng serve --prod` to spin up production like environment
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.

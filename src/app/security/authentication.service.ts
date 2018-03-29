@@ -4,7 +4,6 @@ import { APP_CONSTANTS } from '../constants/app.constants';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { TokenService } from './token.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthorizationService } from './authorization.service';
 import { TOKENS } from '../constants/sample-token.constants';
 

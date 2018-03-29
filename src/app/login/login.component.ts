@@ -4,7 +4,6 @@ import { TokenService } from '../security/token.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 import { AppAlertService } from '../app-alert/service/app-alert.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { APP_CONSTANTS } from '../constants/app.constants';
 import { AppLoaderService } from '../app-loader/service/app-loader.service';
 import { AuthorizationService } from '../security/authorization.service';
