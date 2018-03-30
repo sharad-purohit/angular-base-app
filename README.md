@@ -11,6 +11,18 @@ This project gives a baseline angular based app to help you get started quickly
   * Bootstrap4 Integration
   * Environment Based Configuration
 
+## Setup instructions - local
+### Software requirements
+  * Should have `git` installed
+  * Should have latest `node` and `npm` installed
+  * Should have latest `@angular/cli` installed
+  
+### Setting up
+  * git clone https://github.com/sharad-purohit/angular-base-app.git
+  * Navigate to project directory `cd angular-base-app`
+  * run `npm install`
+  * Follow instruction below to spin up local environment
+    
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

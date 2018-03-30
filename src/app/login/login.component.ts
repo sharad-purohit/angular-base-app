@@ -7,6 +7,7 @@ import { AppAlertService } from '../app-alert/service/app-alert.service';
 import { APP_CONSTANTS } from '../constants/app.constants';
 import { AppLoaderService } from '../app-loader/service/app-loader.service';
 import { AuthorizationService } from '../security/authorization.service';
+import { AppErrorHandler } from '../error-handling/app-error-handler.service';
 
 @Component({
   selector: 'app-login',
@@ -41,7 +42,8 @@ export class LoginComponent implements OnDestroy {
     private tokenService: TokenService,
     private router: Router,
     private alertService: AppAlertService,
-    private loader: AppLoaderService) {
+    private loader: AppLoaderService,
+    private errorHandler: AppErrorHandler) {
 
   }
 
@@ -69,8 +71,8 @@ export class LoginComponent implements OnDestroy {
       // For demo purposes
       setTimeout(() => {
         this.loader.hide();
-      }, 2000);
-      throw new Error('Something went wrong');
+      }, 1000);
+      this.errorHandler.handleError(error, ['err.user.not.authenticated']);
     }, () => {
       // For demo purposes
       setTimeout(() => {

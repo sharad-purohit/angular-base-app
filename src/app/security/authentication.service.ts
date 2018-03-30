@@ -52,7 +52,6 @@ export class AuthenticationService {
         password: userInfo.password,
       }
     }).map(loginResp => {
-      this.extractRoles(loginResp);
       return this.strigifyToken(loginResp);
     }); */
   }
