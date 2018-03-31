@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { APP_CONSTANTS } from '../constants/app.constants';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { TokenService } from './token.service';
 import { AuthorizationService } from './authorization.service';
 import { TOKENS } from '../constants/sample-token.constants';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 /**
  * Houses Authentication related methods
@@ -28,9 +29,20 @@ export class AuthenticationService {
    * @param userInfo user information
    */
   authenticate(userInfo: any): Observable<string> {
+    const userName = userInfo.userName;
     // this is a dummy implementation
     const token = userInfo.userName === 'admin' ? TOKENS.ADMIN : TOKENS.USER;
     return Observable.create(observer => {
+      if (userName !== 'admin' && userName !== 'user') {
+        observer.error(new HttpErrorResponse({
+          error: {
+            message: 'Wrong Credentials'
+          },
+          status: 403,
+          statusText: 'Wrong Credentials'
+        }));
+       // observer.error(new Error('Wrong Credentials'));
+      }
       observer.next(token);
       observer.complete();
     }).map((loginResp) => {

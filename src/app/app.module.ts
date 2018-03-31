@@ -11,9 +11,10 @@ import { APP_CONSTANTS } from './constants/app.constants';
 import { AppAlertModule } from './app-alert/app-alert.module';
 import { AppLoaderModule } from './app-loader/app-loader.module';
 import { TestService } from './test.service';
-import { AppErrorHandler } from './error-handling/app-error-handler.service';
 import { AppHttpInterceptor } from './security/app-http.interceptor';
-import { MessageResolverService } from './message-resolver/message-resolver.service';
+import { AppErrorHandler } from './error-handling/app-error.handler';
+import { ErrorModule } from './error-handling/error.module';
+import { ErrorRouterModule } from './error-handling/error-router.module';
 
 /* export function tokenGetter() {
   const token = localStorage.getItem('access_token');
@@ -32,12 +33,12 @@ import { MessageResolverService } from './message-resolver/message-resolver.serv
     SecurityModule,
     HttpClientModule,
     AppAlertModule,
-    AppLoaderModule
+    AppLoaderModule,
+    ErrorModule,
+    ErrorRouterModule
   ],
   providers: [
-    AppErrorHandler,
     TestService,
-    MessageResolverService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptor,

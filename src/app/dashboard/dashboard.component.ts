@@ -1,10 +1,11 @@
-import { Component, ErrorHandler } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppAlertService } from '../app-alert/service/app-alert.service';
 import { TestService } from '../test.service';
 import { AppLoaderService } from '../app-loader/service/app-loader.service';
 import { Router } from '@angular/router';
 import { TokenService } from '../security/token.service';
-import { AppErrorHandler } from '../error-handling/app-error-handler.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorService } from '../error-handling/error.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +20,8 @@ export class DashboardComponent {
     private testService: TestService,
     private loader: AppLoaderService,
     private router: Router,
-    private tokenService: TokenService, private errorHandler: AppErrorHandler) { }
+    private tokenService: TokenService,
+    private errorService: ErrorService) { }
 
   /**
    * Fetch test data
@@ -29,8 +31,7 @@ export class DashboardComponent {
     this.testService.getTestData().subscribe(data => {
       this.testData = data;
     }, error => {
-      this.loader.hide();
-      this.errorHandler.handleError(error, ['error.resource.not.found']);
+      this.errorService.handleError(error, true);
     }, () => {
       this.loader.hide();
     });

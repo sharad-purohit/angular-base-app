@@ -26,16 +26,6 @@ export class AppHttpInterceptor implements HttpInterceptor {
     const authReq = req.clone({ headers: req.headers.set('Authorization', `Bearer ${authToken}`) });
 
     // Forward the request to subsequent handlerss
-    return next.handle(authReq).catch((error, caught) => {
-      // If the user is not authenticated (in case of token expired or token invalid)
-      if (error.status === HTTP_STATUS.FORBIDDEN) {
-        // logout users, redirect to login page
-        this.tokenService.removeToken();
-        this.router.navigate(['/login']);
-        return Observable.throw(error);
-      } else {
-        return Observable.throw(error);
-      }
-    }) as any;
+    return next.handle(authReq);
   }
 }
