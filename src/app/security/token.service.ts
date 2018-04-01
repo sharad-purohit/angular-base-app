@@ -43,11 +43,17 @@ export class TokenService {
     return this.storage.removeItem(ACCESS_TOKEN);
   }
 
+  /**
+   * Get only the access token from storage
+   */
   public getAccessToken(): string {
-    return JSON.parse(this.getTokenInfo())[ACCESS_TOKEN];
+    return JSON.parse(this.getTokenInfo()) ? JSON.parse(this.getTokenInfo())[ACCESS_TOKEN] : null;
   }
 
+  /**
+   * Get only the refresh token from storage
+   */
   public getRefreshToken(): string {
-    return JSON.parse(this.getTokenInfo())[REFRESH_TOKEN];
+    return JSON.parse(this.getTokenInfo())[REFRESH_TOKEN] ? JSON.parse(this.getTokenInfo()) : null;
   }
 }

@@ -7,6 +7,8 @@ import { AppAlertService } from '../app-alert/service/app-alert.service';
 import { APP_CONSTANTS } from '../constants/app.constants';
 import { AppLoaderService } from '../app-loader/service/app-loader.service';
 import { AuthorizationService } from '../security/authorization.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorService } from '../error-handling/error.service';
 
 @Component({
   selector: 'app-login',
@@ -41,7 +43,8 @@ export class LoginComponent implements OnDestroy {
     private tokenService: TokenService,
     private router: Router,
     private alertService: AppAlertService,
-    private loader: AppLoaderService) {
+    private loader: AppLoaderService,
+    private errorService: ErrorService) {
 
   }
 
@@ -66,24 +69,23 @@ export class LoginComponent implements OnDestroy {
         this.router.navigateByUrl('home');
       }
     }, (error) => {
-      // For demo purposes
-      setTimeout(() => {
-        this.loader.hide();
-      }, 2000);
-      throw new Error('Something went wrong');
-    }, () => {
-      // For demo purposes
-      setTimeout(() => {
-        this.loader.hide();
+      this.errorService.handleError(error, true);
+    },
+      () => {
+        // For demo purposes
+        setTimeout(() => {
+          this.loader.hide();
 
-      }, 2000);
-    });
+        }, 2000);
+      });
   }
 
   /**
    * Unsubscribe to observables not needed when component is destroyed
    */
   ngOnDestroy() {
-    this.authenticateSubscription.unsubscribe();
+    if (this.authenticateSubscription) {
+      this.authenticateSubscription.unsubscribe();
+    }
   }
 }
