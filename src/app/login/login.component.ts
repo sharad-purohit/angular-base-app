@@ -7,7 +7,6 @@ import { AppAlertService } from '../app-alert/service/app-alert.service';
 import { APP_CONSTANTS } from '../constants/app.constants';
 import { AppLoaderService } from '../app-loader/service/app-loader.service';
 import { AuthorizationService } from '../security/authorization.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorService } from '../error-handling/error.service';
 
 @Component({
@@ -39,7 +38,7 @@ export class LoginComponent implements OnDestroy {
 
 
   constructor(private authenticationService: AuthenticationService,
-    private authorizationService: AuthorizationService,
+      private authorizationService: AuthorizationService,
     private tokenService: TokenService,
     private router: Router,
     private alertService: AppAlertService,

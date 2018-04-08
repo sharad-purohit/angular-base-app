@@ -5,7 +5,6 @@ import { environment } from '../../environments/environment';
  */
 export const APP_CONSTANTS = {
   BASE_API_URL: environment.API_URL,
-  AUTH_TOKEN_URL: `https://github.com/login/oauth/access_token`,
   TOKEN_TYPES: {
     BEARER: 'bearer'
   },
@@ -15,6 +14,6 @@ export const APP_CONSTANTS = {
   },
   USER_ROLES: {
     ADMIN: 'ROLE_ADMIN',
-    USER: 'ROLE_USER'
+    USER: 'ROLE_MEMBER'
   }
 };

@@ -4,5 +4,5 @@
 export const HTTP_STATUS = {
   OK: 200,
   CREATED: 201,
-  FORBIDDEN: 401,
+  NOT_AUTHENTICATED: 401
 };

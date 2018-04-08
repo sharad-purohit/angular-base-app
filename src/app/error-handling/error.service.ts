@@ -39,7 +39,7 @@ export class ErrorService {
         // Handle offline error
         this.alertService.alertError(['No Internet Connection']);
       } else {
-        if (error.status === HTTP_STATUS.FORBIDDEN) {
+        if (error.status === HTTP_STATUS.NOT_AUTHENTICATED) {
           this.tokenService.removeToken();
           this.router.navigateByUrl('/login');
         }

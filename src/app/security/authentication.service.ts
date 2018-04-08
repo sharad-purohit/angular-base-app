@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { APP_CONSTANTS } from '../constants/app.constants';
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpParams, HttpErrorResponse} from '@angular/common/http';
+import {APP_CONSTANTS} from '../constants/app.constants';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { TokenService } from './token.service';
-import { AuthorizationService } from './authorization.service';
-import { TOKENS } from '../constants/sample-token.constants';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import {TokenService} from './token.service';
+import {AuthorizationService} from './authorization.service';
+import {TOKENS} from '../constants/sample-token.constants';
+import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
 
 /**
  * Houses Authentication related methods
@@ -14,7 +14,8 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 @Injectable()
 export class AuthenticationService {
 
-  constructor(private http: HttpClient, private tokenService: TokenService, private authorizationService: AuthorizationService) { }
+  constructor(private http: HttpClient, private tokenService: TokenService, private authorizationService: AuthorizationService) {
+  }
 
   /**
    * Strigify the login response object
@@ -29,43 +30,22 @@ export class AuthenticationService {
    * @param userInfo user information
    */
   authenticate(userInfo: any): Observable<string> {
-    const userName = userInfo.userName;
-    // this is a dummy implementation
-    const token = userInfo.userName === 'admin' ? TOKENS.ADMIN : TOKENS.USER;
-    return Observable.create(observer => {
-      if (userName !== 'admin' && userName !== 'user') {
-        observer.error(new HttpErrorResponse({
-          error: {
-            message: 'Wrong Credentials'
-          },
-          status: 403,
-          statusText: 'Wrong Credentials'
-        }));
-       // observer.error(new Error('Wrong Credentials'));
-      }
-      observer.next(token);
-      observer.complete();
-    }).map((loginResp) => {
-      return this.strigifyToken(loginResp);
-    });
-
-    // Use this based on the requirement
-
-
-    /* return this.http.post(`${APP_CONSTANTS.AUTH_TOKEN_URL}`, null, {
+    return this.http.post(`${APP_CONSTANTS.BASE_API_URL}/oauth/token`, null, {
       headers: {
-        'Accept': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
-      // These params can be passed based on your need
       params: {
-        client_id: '',
-        client_secret: '',
-        username: userInfo.userName,
-        password: userInfo.password,
+        'grant_type': 'password',
+        'client_id': 'mma_app',
+        'client_secret': 'mma_app_s3cr3t',
+        'username': userInfo.userName,
+        'password': userInfo.password,
+        'scope': 'read,write,trust'
       }
+      // These params can be passed based on your need
     }).map(loginResp => {
       return this.strigifyToken(loginResp);
-    }); */
+    });
   }
 
   /**

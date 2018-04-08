@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AppAlertConfig } from './app-alert.config';
 import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
 
 /**
  * Service to help publish alerts on application
