@@ -25,7 +25,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
     // Set the Authorization header after cloning the request
     const authReq = req.clone({ headers: req.headers.set('Authorization', `Bearer ${authToken}`) });
 
-    // Forward the request to subsequent handlerss
+    // Forward the request to subsequent handlers
     return next.handle(authReq);
   }
 }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AppLoaderService {
@@ -8,7 +7,6 @@ export class AppLoaderService {
    * Subject an multicast observable for showing loader
    */
   private loader: Subject<boolean> = new Subject();
-
 
   /**
    * Returns the loader subject that can be subscribed upon

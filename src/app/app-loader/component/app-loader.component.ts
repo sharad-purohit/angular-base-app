@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AppLoaderService } from '../service/app-loader.service';
-import { Subscription } from 'rxjs/Subscription';
+import {Component, OnDestroy} from '@angular/core';
+import {AppLoaderService} from '../service/app-loader.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-loader',

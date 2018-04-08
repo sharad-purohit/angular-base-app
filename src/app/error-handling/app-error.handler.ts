@@ -1,10 +1,4 @@
-import { ErrorHandler, Injectable, NgZone, Injector } from '@angular/core';
-import { AppAlertService } from '../app-alert/service/app-alert.service';
-import { HTTP_STATUS } from '../constants/error-status.constants';
-import { Router } from '@angular/router';
-import { TokenService } from '../security/token.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { MessageResolver } from '../utils/message-resolver.util';
+import {ErrorHandler, Injectable} from '@angular/core';
 
 /**
  * Custom Error handler
